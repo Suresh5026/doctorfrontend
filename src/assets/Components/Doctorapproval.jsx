@@ -23,7 +23,7 @@ export default function Doctorapproval() {
     const fetchAppointments = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get(`https://doctorapp-45j4.onrender.com/appoint/getAppointmentsByDoctor/${doctorId}`, {
+        const response = await axios.get(`http://localhost:8000/appoint/getAppointmentsByDoctor/${doctorId}`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -40,7 +40,7 @@ export default function Doctorapproval() {
   const handleApproval = async (appointmentId, status) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`https://doctorapp-45j4.onrender.com/appoint/approveBooking/${doctorId}`, {
+      await axios.put(`http://localhost:8000/appoint/approveBooking/${doctorId}`, {
         appointmentId,
         status
       }, {

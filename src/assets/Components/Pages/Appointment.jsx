@@ -9,12 +9,12 @@ export default function Appointment() {
   const heading = [
     "S.No",
     "Doctor Name",
-    "Doctor Id",
     "Patient Name",
     "Doctor Fees",
     "Date",
     "Time",
     "Action",
+    "Status"
   ];
 
   const [appoint, setAppoint] = useState([]);
@@ -25,7 +25,7 @@ export default function Appointment() {
     const fetchBooking = async () => {
       try {
         const response = await axios.get(
-          `https://doctorapp-45j4.onrender.com/appoint/getappointment/${userId}`,
+          `http://localhost:8000/appoint/getappointment/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -48,7 +48,7 @@ export default function Appointment() {
     try {
       const token = localStorage.getItem("token");
       await axios.delete(
-        `https://doctorapp-45j4.onrender.com/appoint/deleteBooking/${appointmentId}`,
+        `http://localhost:8000/appoint/deleteBooking/${appointmentId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -76,7 +76,7 @@ export default function Appointment() {
       handler: function (response) {
         console.log(response);
         axios
-          .post("https://doctorapp-45j4.onrender.com/pay/verify", {
+          .post("http://localhost:8000/pay/verify", {
             response: response,
             appointmentId: appointmentId,
           })
@@ -99,7 +99,7 @@ export default function Appointment() {
       appointmentId: appointmentId,
     };
     axios
-      .post("https://doctorapp-45j4.onrender.com/pay/orders", data)
+      .post("http://localhost:8000/pay/orders", data)
       .then((res) => {
         console.log("68", res.data.data);
         handleOpenRazropay(res.data.data, appointmentId);
@@ -123,7 +123,7 @@ export default function Appointment() {
         <tbody>
           {appoint.map((element, index) => (
             <tr>
-              <td key={`${index}-${element._id}`}>{index + 1}</td>
+              <td key={`${element._id}-${index}`}>{index + 1}</td>
               <td>{element.doctorName}</td>
               <td>{element.patientName}</td>
               <td>{element.doctorFees}</td>
@@ -145,8 +145,8 @@ export default function Appointment() {
                 )}
               </td>
               <td>
-                {element.paymentStatus !== "Paid" &&
-                element.paymentStatus === "Failed" ? (
+                {element.paymentStatus === "Pending" ?
+                (
                   <Button
                     onClick={() =>
                       handlePayment(element.doctorFees, element._id)

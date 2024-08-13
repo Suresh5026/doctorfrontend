@@ -1,10 +1,9 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
-import { DoctorContext } from "../../Context/Doctorcontext";
 
 export default function Doctorhome() {
-  const { doctorId } = useContext(DoctorContext);
+  const [doctorId, setDoctorId] = useState(null);
   const [appointments, setAppointments] = useState([]);
 
   const heading = [
@@ -17,20 +16,49 @@ export default function Doctorhome() {
   ];
 
   useEffect(() => {
+    const fetchDoctorIdByEmail = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const email = localStorage.getItem("email"); // Assuming email is stored in local storage
+
+        if (!email) {
+          console.error("Doctor email not found in local storage.");
+          return;
+        }
+
+        const response = await axios.get(`http://localhost:8000/doctor/getDoctorByEmail/${email}`, {
+          headers: {
+            Authorization: `Bearer ${token}`, // If using authentication
+          },
+        });
+        console.log(response.data.data);
+        
+        setDoctorId(response.data.doctorId);
+      } catch (error) {
+        console.error("Error fetching doctor ID by email:", error);
+      }
+    };
+    fetchDoctorIdByEmail();
+  }, []);
+
+
+  useEffect(() => {
     if (!doctorId) return;
 
     const fetchAppointments = async () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          `https://doctorapp-45j4.onrender.com/appoint/getAppointmentsByDoctor/${doctorId}`,
+          `http://localhost:8000/appoint/getAppointmentsByDoctor/${doctorId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }
         );
-        setAppointments(response.data.data || []); // Ensure appointments is always an array
+        setAppointments(response.data.data || []);
+        console.log(response.data.data);
+        
       } catch (error) {
         console.error("Error fetching appointments:", error);
       }
@@ -38,14 +66,6 @@ export default function Doctorhome() {
 
     fetchAppointments();
   }, [doctorId]);
-
-  const today = new Date().setHours(0, 0, 0, 0);
-
-  const pendingAppointments = appointments.filter(
-    (app) => {
-      const appointmentDate = new Date(app.date).setHours(0, 0, 0, 0);
-      app.status === "Approved" && appointmentDate >= today }
-  );
 
   return (
     <>
@@ -59,8 +79,8 @@ export default function Doctorhome() {
           </tr>
         </thead>
         <tbody>
-          {pendingAppointments.length > 0 ? (
-            pendingAppointments.map((appointment, index) => (
+          {appointments.length > 0 ? (
+            appointments.map((appointment, index) => (
               <tr key={appointment._id}>
                 <td>{index + 1}</td>
                 <td>{appointment.patientName}</td>
@@ -72,9 +92,7 @@ export default function Doctorhome() {
             ))
           ) : (
             <tr>
-              <td colSpan={heading.length}>
-                No Pending Appointments Available
-              </td>
+              <td colSpan={heading.length}>No Appointments Available</td>
             </tr>
           )}
         </tbody>

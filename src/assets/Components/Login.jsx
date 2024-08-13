@@ -11,6 +11,7 @@ const validateEmail = (email) => {
 
 export default function Login() {
   const [alertMessage, setAlertMessage] = useState(null);
+  const [forceUpdate, setForceUpdate] = useState(0); 
   const navigate = useNavigate();
   return (
     <>
@@ -46,16 +47,17 @@ export default function Login() {
                 onSubmit={(values, { setSubmitting }) => {
                   setSubmitting(true);
                   axios
-                    .post("https://doctorapp-45j4.onrender.com/user/login", values)
+                    .post("http://localhost:8000/user/login", values)
                     .then((res) => {
                       const result = res.data;
-                      console.log(result);
+                      console.log(res.data);
                       
                       if (result.message === "Login Successful") {
                         localStorage.setItem("token", result.token);
                         localStorage.setItem("status",result.status);
                         localStorage.setItem("name",result.name);
                         localStorage.setItem("_id",result._id);
+                        localStorage.setItem('email',result.email)
                         // login();
                         setAlertMessage("Login Success");
                         setSubmitting(false);

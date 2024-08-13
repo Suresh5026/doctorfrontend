@@ -48,7 +48,7 @@ export default function Bookappoint() {
   const fetchBookedSlots = async (date) => {
     try {
       const response = await axios.get(
-        `https://doctorapp-45j4.onrender.com/appoint/getAppointmentsByDoctor/${doctor._id}?date=${date}`
+        `http://localhost:8000/appoint/getAppointmentsByDoctor/${doctor._id}?date=${date}`
       );
       const booked = response.data.data.map((appointment) => ({
         start: appointment.bookfromtime,
@@ -114,7 +114,7 @@ export default function Bookappoint() {
                 const token = localStorage.getItem("token");
 
                 await axios.post(
-                  "https://doctorapp-45j4.onrender.com/appoint/createAppointment",
+                  "http://localhost:8000/appoint/createAppointment",
                   {
                     doctorId: doctor._id,
                     patientId: userId,

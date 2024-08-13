@@ -20,7 +20,7 @@ export default function Detail() {
     const fetchDoctor = async () => {
       try {
         const response = await axios.get(
-          "https://doctorapp-45j4.onrender.com/doctor/getDoctor",
+          "http://localhost:8000/doctor/getDoctor",
           {
             headers: {
               Authorization: `Bearer ${token}`,
