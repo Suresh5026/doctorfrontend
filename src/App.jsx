@@ -30,11 +30,11 @@ function App() {
           
           <Row>
             {!hideNavbar && (
-              <Col xs={12} lg={12}>
+              <Col xs={12} lg={3}>
                 <Navbarc />
               </Col>
             )}
-            <Col xs={12} lg={hideNavbar ? 12 : 12}>
+            <Col xs={12} lg={hideNavbar ? 12 : 9}>
               <Routes>
                 <Route path="/" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
