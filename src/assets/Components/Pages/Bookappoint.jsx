@@ -4,8 +4,8 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
-import { useContext,  useState } from "react";
-import { UserContext } from "../../Context/Usercontext";
+import { useEffect, useState } from "react";
+
 
 const generateTimeSlots = (fromTime, toTime, slotDuration = 30) => {
   const slots = [];
@@ -29,7 +29,7 @@ const generateTimeSlots = (fromTime, toTime, slotDuration = 30) => {
 };
 
 export default function Bookappoint() {
-  // const { name, userId } = useContext(UserContext);
+
   const [name, setName] = useState("");
   const [userId, setUserId] = useState("");
   const navigate = useNavigate();
