@@ -4,7 +4,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 120vh;
+  height: 160vh;
   margin: 0;
   padding: 0;
 }
@@ -27,7 +27,7 @@ body {
   width: 200px;
   background-color: #d1dbe8;
   transition: width 0.1s;
-  /* z-index: 1000; */
+  z-index: 1000;
   margin: 1px;
 }
 .compo {
