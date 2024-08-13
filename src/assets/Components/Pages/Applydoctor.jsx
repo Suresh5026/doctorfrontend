@@ -67,7 +67,7 @@ export default function Applydoctor() {
           }
           try {
             const response = await axios.post(
-              "http://localhost:8000/doctor/create-doctor",
+              "https://doctorapp-45j4.onrender.com/doctor/create-doctor",
               values,
               {
                 headers: {

@@ -18,7 +18,7 @@ export default function Doctors(){
         const token = localStorage.getItem('token');
         const fetchDoctor =async () =>{
             try{
-                const response =await axios.get('http://localhost:8000/doctor/getDoctor',
+                const response =await axios.get('https://doctorapp-45j4.onrender.com/doctor/getDoctor',
                     {
                         headers : {
                             Authorization : `Beared ${token}`
@@ -40,7 +40,7 @@ export default function Doctors(){
         const token = localStorage.getItem('token');
         try {
           await axios.put(
-            `http://localhost:8000/approve/approveDoctor/${doctorId}`,
+            `https://doctorapp-45j4.onrender.com/approve/approveDoctor/${doctorId}`,
             {},
             {
               headers: {
@@ -50,7 +50,7 @@ export default function Doctors(){
           );
     
           
-          const response = await axios.get('http://localhost:8000/doctor/getDoctor', {
+          const response = await axios.get('https://doctorapp-45j4.onrender.com/doctor/getDoctor', {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -66,7 +66,7 @@ export default function Doctors(){
         const token = localStorage.getItem('token');
         try {
           await axios.put(
-            `http://localhost:8000/approve/approveDoctor/${doctorId}`, 
+            `https://doctorapp-45j4.onrender.com/approve/approveDoctor/${doctorId}`, 
             {},
             {
               headers: {
@@ -76,7 +76,7 @@ export default function Doctors(){
           );
       
          
-          const response = await axios.get('http://localhost:8000/doctor/getDoctor', {
+          const response = await axios.get('https://doctorapp-45j4.onrender.com/doctor/getDoctor', {
             headers: {
               Authorization: `Bearer ${token}`,
             },

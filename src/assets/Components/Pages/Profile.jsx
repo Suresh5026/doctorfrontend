@@ -13,7 +13,7 @@ export default function Profile() {
         if (!doctorId) return;
 
         const response = await axios.get(
-          `http://localhost:8000/doctor/getDoctor/${doctorId}`
+          `https://doctorapp-45j4.onrender.com/doctor/getDoctor/${doctorId}`
         );
         setDoctor(response.data.data);
       } catch (error) {

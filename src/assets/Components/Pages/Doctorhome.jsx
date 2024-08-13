@@ -23,7 +23,7 @@ export default function Doctorhome() {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          `http://localhost:8000/appoint/getAppointmentsByDoctor/${doctorId}`,
+          `https://doctorapp-45j4.onrender.com/appoint/getAppointmentsByDoctor/${doctorId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

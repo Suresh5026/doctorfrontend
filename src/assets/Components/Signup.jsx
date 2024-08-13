@@ -64,7 +64,7 @@ export default function Signup() {
                 onSubmit={(values, { setSubmitting }) => {
                   setSubmitting(true);
                   axios
-                    .post("http://localhost:8000/user/register", values)
+                    .post("https://doctorapp-45j4.onrender.com/user/register", values)
                     .then((res) => {
                       const response = res.data;
                       if (response.message === "User Registered Successfully") {

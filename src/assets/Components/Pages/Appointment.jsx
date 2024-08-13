@@ -25,7 +25,7 @@ export default function Appointment() {
     const fetchBooking = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/appoint/getappointment/${userId}`,
+          `https://doctorapp-45j4.onrender.com/appoint/getappointment/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -48,7 +48,7 @@ export default function Appointment() {
     try {
       const token = localStorage.getItem("token");
       await axios.delete(
-        `http://localhost:8000/appoint/deleteBooking/${appointmentId}`,
+        `https://doctorapp-45j4.onrender.com/appoint/deleteBooking/${appointmentId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -76,7 +76,7 @@ export default function Appointment() {
       handler: function (response) {
         console.log(response);
         axios
-          .post("http://localhost:8000/pay/verify", {
+          .post("https://doctorapp-45j4.onrender.com/pay/verify", {
             response: response,
             appointmentId: appointmentId,
           })
@@ -99,7 +99,7 @@ export default function Appointment() {
       appointmentId: appointmentId,
     };
     axios
-      .post("http://localhost:8000/pay/orders", data)
+      .post("https://doctorapp-45j4.onrender.com/pay/orders", data)
       .then((res) => {
         console.log("68", res.data.data);
         handleOpenRazropay(res.data.data, appointmentId);
