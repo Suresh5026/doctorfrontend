@@ -29,7 +29,9 @@ const generateTimeSlots = (fromTime, toTime, slotDuration = 30) => {
 };
 
 export default function Bookappoint() {
-  const { name, userId } = useContext(UserContext);
+  // const { name, userId } = useContext(UserContext);
+  const [name, setName] = useState("");
+  const [userId, setUserId] = useState("");
   const navigate = useNavigate();
   const { state } = useLocation();
   const { doctor } = state;
@@ -38,6 +40,15 @@ export default function Bookappoint() {
   const today = new Date().toISOString().split("T")[0];
   const maxDate = new Date();
   maxDate.setDate(maxDate.getDate() + 7);
+
+  useEffect(() => {
+    
+    const storedName = localStorage.getItem("name");
+    const storedUserId = localStorage.getItem("userId");
+
+    if (storedName) setName(storedName);
+    if (storedUserId) setUserId(storedUserId);
+  }, []);
 
   const handleBack = () => {
     navigate("/home");

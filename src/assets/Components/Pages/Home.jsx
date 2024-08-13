@@ -4,7 +4,6 @@ import Doctorhome from "./Doctorhome";
 
 
 export default function Home() {
-  // const [loading, setLoading] = useState(true);
   const [status, setStatus] = useState(null)
 
   useEffect(() => {
@@ -15,10 +14,6 @@ export default function Home() {
     }
 
   }, [status]);
-
-  // if (loading) {
-  //   return <div>Loading...</div>;
-  // }
 
   return (
     <>
