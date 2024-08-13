@@ -14,16 +14,15 @@ export default function Profile() {
     const fetchDoctorIdByEmail = async () => {
       try {
         const token = localStorage.getItem("token");
-        const email = localStorage.getItem("email"); // Assuming email is stored in local storage
-
+        const email = localStorage.getItem("email"); 
         if (!email) {
           console.error("Doctor email not found in local storage.");
           return;
         }
 
-        const response = await axios.get(`http://localhost:8000/doctor/getDoctorByEmail/${email}`, {
+        const response = await axios.get(`https://doctorapp-45j4.onrender.com/doctor/getDoctorByEmail/${email}`, {
           headers: {
-            Authorization: `Bearer ${token}`, // If using authentication
+            Authorization: `Bearer ${token}`, 
           },
         });
 
@@ -40,9 +39,9 @@ export default function Profile() {
       try {
         if (!doctorId) return;
 
-        const response = await axios.get(`http://localhost:8000/doctor/getDoctor/${doctorId}`);
+        const response = await axios.get(`https://doctorapp-45j4.onrender.com/doctor/getDoctor/${doctorId}`);
         setDoctor(response.data.data);
-        setFormData(response.data.data); // Initialize form data
+        setFormData(response.data.data); 
       } catch (error) {
         console.error("Error fetching doctor data:", error);
       }
@@ -59,13 +58,13 @@ export default function Profile() {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      await axios.put(`http://localhost:8000/doctor/update-doctor/${doctorId}`, formData, {
+      await axios.put(`https://doctorapp-45j4.onrender.com/doctor/update-doctor/${doctorId}`, formData, {
         headers: {
-          Authorization: `Bearer ${token}`, // If using authentication
+          Authorization: `Bearer ${token}`, 
         },
       });
-      setDoctor(formData); // Update the doctor state with the new data
-      setEditMode(false); // Exit edit mode
+      setDoctor(formData); 
+      setEditMode(false); 
     } catch (error) {
       console.error("Error updating doctor data:", error);
     }

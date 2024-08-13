@@ -26,7 +26,7 @@ export default function Doctorhome() {
           return;
         }
 
-        const response = await axios.get(`http://localhost:8000/doctor/getDoctorByEmail/${email}`, {
+        const response = await axios.get(`https://doctorapp-45j4.onrender.com/doctor/getDoctorByEmail/${email}`, {
           headers: {
             Authorization: `Bearer ${token}`, // If using authentication
           },
@@ -49,7 +49,7 @@ export default function Doctorhome() {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          `http://localhost:8000/appoint/getAppointmentsByDoctor/${doctorId}`,
+          `https://doctorapp-45j4.onrender.com/appoint/getAppointmentsByDoctor/${doctorId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

@@ -16,7 +16,7 @@ export const DoctorProvider = ({ children }) => {
           return null;
         }
 
-        const response = await axios.get('http://localhost:8000/user/current-user', {
+        const response = await axios.get('https://doctorapp-45j4.onrender.com/user/current-user', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -33,7 +33,7 @@ export const DoctorProvider = ({ children }) => {
         const loggedInUser = await fetchLoggedInUser();
         if (!loggedInUser) return;
 
-        const response = await axios.get('http://localhost:8000/doctor/getDoctor');
+        const response = await axios.get('https://doctorapp-45j4.onrender.com/doctor/getDoctor');
         const doctorsData = response.data.data;
         setDoctors(doctorsData);
 

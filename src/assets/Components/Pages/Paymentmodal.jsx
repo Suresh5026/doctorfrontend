@@ -54,7 +54,7 @@ export default function PaymentModal({ appointment, onClose }) {
           paymentData.cmuNumber = cmuNumber;
         }
 
-        const response = await axios.post("http://localhost:8000/pay/make-payment", paymentData, {
+        const response = await axios.post("https://doctorapp-45j4.onrender.com/pay/make-payment", paymentData, {
           headers: {
             Authorization: `Bearer ${token}`
           }
