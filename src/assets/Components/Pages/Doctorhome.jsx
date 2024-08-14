@@ -75,14 +75,14 @@ export default function Doctorhome() {
       <Table responsive striped bordered hover variant="dark">
         <thead>
           <tr>
-            {pendingAppointments.map((head, index) => (
+            {heading.map((head, index) => (
               <th key={index}>{head}</th>
             ))}
           </tr>
         </thead>
         <tbody>
-          {appointments.length > 0 ? (
-            appointments.map((appointment, index) => (
+          {pendingAppointments.length > 0 ? (
+            pendingAppointments.map((appointment, index) => (
               <tr key={appointment._id}>
                 <td>{index + 1}</td>
                 <td>{appointment.patientName}</td>

@@ -28,7 +28,7 @@ export default function Appointment() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    const userId = localStorage.getItem('_id')
+    if (!token || !userId) return;
     const fetchBooking = async () => {
       try {
         const response = await axios.get(
