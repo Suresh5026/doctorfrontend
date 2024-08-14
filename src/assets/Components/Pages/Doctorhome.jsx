@@ -67,13 +67,15 @@ export default function Doctorhome() {
     fetchAppointments();
   }, [doctorId]);
 
+  const pendingAppointments = appointments.filter(app => app.status === "Approved");
+
   return (
     <>
       <h1>Hi Doctor</h1>
       <Table responsive striped bordered hover variant="dark">
         <thead>
           <tr>
-            {heading.map((head, index) => (
+            {pendingAppointments.map((head, index) => (
               <th key={index}>{head}</th>
             ))}
           </tr>

@@ -28,7 +28,7 @@ export default function Doctorapproval() {
             Authorization: `Bearer ${token}`
           }
         });
-        setAppointments(response.data.data || []); // Ensure appointments is always an array
+        setAppointments(response.data.data || []); 
       } catch (error) {
         console.error('Error fetching appointments:', error);
       }
