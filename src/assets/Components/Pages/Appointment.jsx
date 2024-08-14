@@ -5,7 +5,7 @@ import { UserContext } from "../../Context/Usercontext";
 
 
 export default function Appointment() {
-  const { userId } = useContext(UserContext);
+  
   const heading = [
     "S.No",
     "Doctor Name",
@@ -18,7 +18,16 @@ export default function Appointment() {
   ];
 
   const [appoint, setAppoint] = useState([]);
-  
+  const [userId, setUserId] = useState("");
+  useEffect(() => {
+    
+    const storedName = localStorage.getItem("name");
+    const storedUserId = localStorage.getItem("_id");
+
+    if (storedName) setName(storedName);
+    if (storedUserId) setUserId(storedUserId);
+  }, []);
+
 
   useEffect(() => {
     const token = localStorage.getItem("token");
