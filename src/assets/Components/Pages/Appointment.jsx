@@ -21,10 +21,7 @@ export default function Appointment() {
   const [userId, setUserId] = useState("");
   useEffect(() => {
     
-    const storedName = localStorage.getItem("name");
     const storedUserId = localStorage.getItem("_id");
-
-    if (storedName) setName(storedName);
     if (storedUserId) setUserId(storedUserId);
   }, []);
 
