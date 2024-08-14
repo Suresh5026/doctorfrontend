@@ -81,8 +81,8 @@ export default function Doctorhome() {
           </tr>
         </thead>
         <tbody>
-          {pendingAppointments.length > 0 ? (
-            pendingAppointments.map((appointment, index) => (
+          {appointments.length > 0 ? (
+            appointments.map((appointment, index) => (
               <tr key={appointment._id}>
                 <td>{index + 1}</td>
                 <td>{appointment.patientName}</td>
