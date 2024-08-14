@@ -6,6 +6,7 @@
   - [Introduction](#introduction)
   - [Features](#features)
   - [Tech Stack](#tech-stack)
+  - [Demonstrate Credentials](#demonstrate-credentials)
   
 
 ## Introduction
@@ -26,4 +27,10 @@ The **Doctor Booking App** frontend is a ReactJS-based web application that allo
 - **State Management**: React Context API
 - **Routing**: React Router
 - **Payment Gateway**: Razorpay
+
+## Demonstrate Credentials
+
+- **User**: xyz@mail.com 12345678
+- **Doctor**: john@mail.com 12345678
+- **Admin** admin@mail.com 12345678
 

@@ -67,7 +67,9 @@ export default function Doctorhome() {
     fetchAppointments();
   }, [doctorId]);
 
-  const pendingAppointments = appointments.filter(app => app.status === "Approved");
+  const approvedAppointments = appointments.filter(
+    (app) => app.status === "Approved"
+  );
 
   return (
     <>
@@ -81,8 +83,8 @@ export default function Doctorhome() {
           </tr>
         </thead>
         <tbody>
-          {appointments.length > 0 ? (
-            appointments.map((appointment, index) => (
+          {approvedAppointments.length > 0 ? (
+            approvedAppointments.map((appointment, index) => (
               <tr key={appointment._id}>
                 <td>{index + 1}</td>
                 <td>{appointment.patientName}</td>
