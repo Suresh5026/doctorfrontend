@@ -1,7 +1,7 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Table, Modal, Card } from "react-bootstrap";
-import { UserContext } from "../../Context/Usercontext";
+
 
 
 export default function Appointment() {

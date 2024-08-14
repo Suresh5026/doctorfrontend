@@ -19,7 +19,7 @@ export default function Doctorhome() {
     const fetchDoctorIdByEmail = async () => {
       try {
         const token = localStorage.getItem("token");
-        const email = localStorage.getItem("email"); // Assuming email is stored in local storage
+        const email = localStorage.getItem("email"); 
 
         if (!email) {
           console.error("Doctor email not found in local storage.");
@@ -28,7 +28,7 @@ export default function Doctorhome() {
 
         const response = await axios.get(`https://doctorapp-45j4.onrender.com/doctor/getDoctorByEmail/${email}`, {
           headers: {
-            Authorization: `Bearer ${token}`, // If using authentication
+            Authorization: `Bearer ${token}`, 
           },
         });
         console.log(response.data.data);
